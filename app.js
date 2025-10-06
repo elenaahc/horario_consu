@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const schedules = {
     lunes: [
-      { hora: "14:15 - 14:55", actividad: "Intervenciones Educativas en Salud sala: S-03-P03-A", clase: "intervenciones" },
+      { hora: "14:15 - 14:55", actividad: "Intervenciones Educativas en Salud\n sala: S-03-P03-A", clase: "intervenciones" },
       { hora: "14:56 - 15:35", actividad: "Intervenciones Educativas en Salud sala: S-03-P03-A", clase: "intervenciones" },
       { hora: "15:46 - 16:25", actividad: "Bases Fisiopatológicas para el Cuidado sala: S-03-P03-A", clase: "bases-fisiopatologicas" },
       { hora: "16:26 - 17:05", actividad: "Bases Fisiopatológicas para el Cuidado sala: S-03-P03-A", clase: "bases-fisiopatologicas" },
