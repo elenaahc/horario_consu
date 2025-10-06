@@ -16,6 +16,10 @@ h1 {
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
+.schedule-table td {
+    white-space: pre-line;
+}
+
 thead th {
     background: linear-gradient(135deg, #343a40, #495057);
     color: white;
