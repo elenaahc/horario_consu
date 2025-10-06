@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
       { hora: "15:46 - 16:25", actividad: "Bases Fisiopatológicas para el Cuidado \n Sala: S-03-P03-A \n Docente: Rayen Oliva", clase: "bases-fisiopatologicas" },
       { hora: "16:26 - 17:05", actividad: "Bases Fisiopatológicas para el Cuidado \n Sala: S-03-P03-A \n Docente: Rayen Oliva", clase: "bases-fisiopatologicas" },
       { hora: "17:15 - 17:55", actividad: "Bases Fisiopatológicas para el Cuidado \n Sala: S-03-P03-A \n Docente: Rayen Oliva", clase: "bases-fisiopatologicas" },
-      { hora: "17:56 - 18:35", actividad: "Bases Fisiopatológicas para el Cuidado \n Sala: S-03-P03-A \n Docente: Rayen Oliva", clase: "bases2-fisiopatologicas" },
-      { hora: "18:40 - 19:20", actividad: "Bases Fisiopatológicas para el Cuidado \n Sala: S-03-P03-A \n Docente: Rayen Oliva", clase: "bases2-fisiopatologicas" },
+      { hora: "17:56 - 18:35", actividad: "Bases Fisiopatológicas para el Cuidado \n Sala: S-03-P03-A \n Docente: Tomas Wood", clase: "bases2-fisiopatologicas" },
+      { hora: "18:40 - 19:20", actividad: "Bases Fisiopatológicas para el Cuidado \n Sala: S-03-P03-A \n Docente: Tomas Wood", clase: "bases2-fisiopatologicas" },
     ],
     martes: [
       { hora: "14:15 - 14:55", actividad: "Intervenciones Educativas en Salud \n Sala: S-03-P03-A \n Docente: Valeska Norambuena", clase: "intervenciones2" },
