@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horario</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f4f6f8;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        /* Contenedor tabla */
+        .schedule-table {
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: white;
+        }
+
+        thead th {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+        }
+
+        tbody td {
+            vertical-align: middle;
+        }
+
+        .no-schedule {
+            color: red;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        /* Colores asignaturas */
+        .intervenciones { background-color: #e1628b; }
+        .intervenciones2 { background-color: #62e1c9; }
+        .bases-fisiopatologicas { background-color: #67a6d4; }
+        .bases2-fisiopatologicas { background-color: #9595ff; }
+        .fundamentos-salud { background-color: #e1a557; }
+        .ingles-basico { background-color: #a05cd4; }
+        .proceso-enfermeria { background-color: #82ba6d; }
+        .gestion-salud-mental {background-color: #c78a6b;}
+        .gestion2-salud-mental {background-color: #82ba6d;}
+
+        /* Selector optimizado para móviles */
+        #daySelect {
+            max-width: 300px;
+            margin: 0 auto;
+            font-size: 1rem;
+        }
+
+        /* Responsive: tarjetas en móviles */
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            /* Centrar y compactar selector */
+            .form-group {
+                text-align: center;
+            }
+            #daySelect {
+                font-size: 0.9rem;
+                padding: 0.5rem;
+            }
+
+            /* Tabla en formato tarjetas */
+            table, thead, tbody, th, td, tr {
+                display: block;
+                width: 100%;
+            }
+            thead {
+                display: none;
+            }
+            tr {
+                margin-bottom: 1rem;
+                background: #fff;
+                border-radius: 8px;
+                padding: 0.8rem;
+                box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            }
+            td {
+                border: none;
+                padding: 0.4rem 0;
+                font-size: 0.95rem;
+            }
+            td:first-child {
+                font-weight: bold;
+                color: #333;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="mt-4">Horario</h1>
+        </header>
+        <main>
+            <div class="form-group mt-3">
+                <label for="daySelect"><strong>Selecciona un día:</strong></label>
+                <select class="form-control" id="daySelect" onchange="updateSchedule()" aria-label="Selecciona un día de la semana">
+                    <option value="lunes">Lunes</option>
+                    <option value="martes">Martes</option>
+                    <option value="miércoles">Miércoles</option>
+                    <option value="jueves">Jueves</option>
+                    <option value="viernes">Viernes</option>
+                </select>
+            </div>
+
+            <table class="table table-bordered schedule-table" id="scheduleTable">
+                <thead>
+                    <tr>
+                        <th>Hora</th>
+                        <th>Actividad</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <div id="noScheduleMessage" class="no-schedule" style="display: none;">No hay actividades para este día.</div>
+        </main>
+    </div>
+
+    <script>
+        const schedules = {
+            lunes: [
+                { hora: "14:15 - 14:55", actividad: "Intervenciones Educativas en Salud sala: S-03-P03-A", clase: "intervenciones" },
+                { hora: "14:56 - 15:35", actividad: "Intervenciones Educativas en Salud sala: S-03-P03-A", clase: "intervenciones" },
+                { hora: "15:46 - 16:25", actividad: "Bases Fisiopatológicas para el Cuidado sala: S-03-P03-A", clase: "bases-fisiopatologicas" },
+                { hora: "16:26 - 17:05", actividad: "Bases Fisiopatológicas para el Cuidado sala: S-03-P03-A", clase: "bases-fisiopatologicas" },
+                { hora: "17:15 - 17:55", actividad: "Bases Fisiopatológicas para el Cuidado sala: S-03-P03-A", clase: "bases-fisiopatologicas" },
+                { hora: "17:56 - 18:35", actividad: "Bases Fisiopatológicas para el Cuidado sala: S-03-P03-A", clase: "bases2-fisiopatologicas" },
+                { hora: "18:40 - 19:20", actividad: "Bases Fisiopatológicas para el Cuidado sala: S-03-P03-A", clase: "bases2-fisiopatologicas" },
+            ],
+            martes: [
+                { hora: "14:15 - 14:55", actividad: "Intervenciones Educativas en Salud sala: S-03-P03-A", clase: "intervenciones2" },
+                { hora: "14:56 - 15:35", actividad: "Intervenciones Educativas en Salud sala: S-03-P03-A", clase: "intervenciones2" },
+                { hora: "15:46 - 16:25", actividad: "Fundamentos en Salud Pública sala: S-03-P03-A", clase: "fundamentos-salud" },
+                { hora: "16:26 - 17:05", actividad: "Fundamentos en Salud Pública sala: S-03-P03-A", clase: "fundamentos-salud" },
+                { hora: "17:15 - 17:55", actividad: "Gestión del Cuidado en Salud Mental sala: S-03-P03-A", clase: "gestion-salud-mental" },
+                { hora: "17:56 - 18:35", actividad: "Gestión del Cuidado en Salud Mental sala: S-03-P03-A", clase: "gestion-salud-mental" },
+                { hora: "18:40 - 19:20", actividad: "Gestión del Cuidado en Salud Mental sala: S-03-P03-A", clase: "gestion-salud-mental" },
+            ],
+            miércoles: [
+                { hora: "14:15 - 14:55", actividad: "Inglés Básico I sala: S-03-P05-A", clase: "ingles-basico" },
+                { hora: "14:56 - 15:35", actividad: "Inglés Básico I sala: S-03-P05-A", clase: "ingles-basico" },
+                { hora: "15:46 - 16:25", actividad: "Fundamentos en Salud Pública sala: S-02-P05-A", clase: "fundamentos-salud" },
+                { hora: "16:26 - 17:05", actividad: "Fundamentos en Salud Pública sala: S-02-P05-A", clase: "fundamentos-salud" },
+                { hora: "17:15 - 17:55", actividad: "Fundamentos en Salud Pública sala: S-02-P05-A", clase: "fundamentos-salud" },
+            ],
+            jueves: [
+                { hora: "14:15 - 14:55", actividad: "Proceso de Enfermería sala: L-07-P06-A", clase: "proceso-enfermeria" },
+                { hora: "14:56 - 15:35", actividad: "Proceso de Enfermería sala: L-07-P06-A", clase: "proceso-enfermeria" },
+            ],
+            viernes: [
+                { hora: "14:15 - 14:55", actividad: "Inglés Básico I sala: S-03-P05-A", clase: "ingles-basico" },
+                { hora: "14:56 - 15:35", actividad: "Inglés Básico I sala: S-03-P05-A", clase: "ingles-basico" },
+                { hora: "15:46 - 16:25", actividad: "Bases Fisiopatológicas para el Cuidado sala: S-03-P05-A", clase: "bases-fisiopatologicas" },
+                { hora: "16:26 - 17:05", actividad: "Bases Fisiopatológicas para el Cuidado sala: S-03-P05-A", clase: "bases-fisiopatologicas" },
+                { hora: "17:15 - 17:55", actividad: "Gestión del Cuidado en Salud Mental sala: S-03-P05-A", clase: "gestion2-salud-mental" },
+                { hora: "17:56 - 18:35", actividad: "Gestión del Cuidado en Salud Mental sala: S-03-P05-A", clase: "gestion2-salud-mental" },
+            ],
+        };
+
+        function updateSchedule() {
+        const selectedDay = document.getElementById('daySelect').value;
+        const scheduleTableBody = document.getElementById('scheduleTable').getElementsByTagName('tbody')[0];
+        const noScheduleMessage = document.getElementById('noScheduleMessage');
+        scheduleTableBody.innerHTML = '';
+        noScheduleMessage.style.display = 'none';
+
+        if (schedules[selectedDay] && schedules[selectedDay].length > 0) {
+            schedules[selectedDay].forEach(item => {
+                const row = scheduleTableBody.insertRow();
+                const cellHour = row.insertCell(0);
+                const cellActivity = row.insertCell(1);
+                cellHour.textContent = item.hora;
+                cellActivity.textContent = item.actividad;
+                cellActivity.classList.add(item.clase);
+            });
+        } else {
+            noScheduleMessage.style.display = 'block';
+        }
+    }
+
+    // Función para obtener el día actual y cargarlo
+    window.onload = function () {
+        const daysMap = {
+            1: "lunes",
+            2: "martes",
+            3: "miércoles",
+            4: "jueves",
+            5: "viernes"
+        };
+
+        const today = new Date().getDay(); // 0 = domingo, 1 = lunes ...
+        const currentDay = daysMap[today] || "lunes"; // si es sábado o domingo, por defecto lunes
+
+        // Seleccionar el día actual en el <select>
+        document.getElementById('daySelect').value = currentDay;
+
+        // Mostrar horario del día actual
+        updateSchedule();
+
+    };
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" defer></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
+</body>
+</html>
