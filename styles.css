@@ -1,0 +1,120 @@
+body {
+    background: linear-gradient(135deg, #f4f6f8, #e8edf2);
+    font-family: "Poppins", sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2rem;
+}
+
+/* Contenedor tabla */
+.schedule-table {
+    margin-top: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+thead th {
+    background: linear-gradient(135deg, #343a40, #495057);
+    color: white;
+    text-align: center;
+}
+
+tbody td {
+    vertical-align: middle;
+}
+
+.schedule-table tbody tr {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.schedule-table tbody tr:hover {
+    transform: scale(1.01);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.no-schedule {
+    color: red;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* Colores asignaturas */
+.intervenciones { background-color: #ffb6c1; color: #222; }
+.intervenciones2 { background-color: #a1f0dc; color: #222; }
+.bases-fisiopatologicas { background-color: #90caf9; color: #222; }
+.bases2-fisiopatologicas { background-color: #b39ddb; color: #222; }
+.fundamentos-salud { background-color: #ffd54f; color: #222; }
+.ingles-basico { background-color: #ce93d8; color: #222; }
+.proceso-enfermeria { background-color: #a5d6a7; color: #222; }
+.gestion-salud-mental, .gestion2-salud-mental { background-color: #ffcc80; color: #222; }
+
+
+
+/* Selector optimizado para móviles */
+#daySelect {
+    max-width: 300px;
+    margin: 0 auto;
+    font-size: 1rem;
+}
+
+/* Responsive: tarjetas en móviles */
+@media (max-width: 576px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    /* Centrar y compactar selector */
+    .form-group {
+        text-align: center;
+    }
+
+    #daySelect {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+
+    /* Tabla en formato tarjetas */
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+        width: 100%;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tr {
+        position: relative;
+        border-left: 5px solid #007bff;
+    }
+    td:first-child::before {
+        content: "🕒 ";
+    }
+
+    tr {
+        margin-bottom: 1rem;
+        background: #fff;
+        border-radius: 8px;
+        padding: 0.8rem;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    td {
+        border: none;
+        padding: 0.4rem 0;
+        font-size: 0.95rem;
+    }
+
+    td:first-child {
+        font-weight: bold;
+        color: #333;
+    }
+}
