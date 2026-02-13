@@ -3,39 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horario</title>
+    <title>Horario Consu - Sto. Tomás</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container pb-5">
         <header class="text-center mt-4 mb-3 p-3 bg-white shadow-sm rounded">
-            <h1 class="mb-0">Horario</h1>
+            <h1 class="mb-0">Horario de Consu</h1>
+            <small class="text-muted font-weight-bold">Semestre Pregrado 2026 - 1</small>
         </header>
-        <main>
-            <div class="form-group mt-3">
-                <label for="daySelect"><strong>Selecciona un día:</strong></label>
-                <select class="form-control" id="daySelect" onchange="updateSchedule()" aria-label="Selecciona un día de la semana">
-                    <option value="lunes">Lunes</option>
-                    <option value="martes">Martes</option>
-                    <option value="miércoles">Miércoles</option>
-                    <option value="jueves">Jueves</option>
-                    <option value="viernes">Viernes</option>
-                </select>
+
+        <div class="d-flex justify-content-center mb-4">
+            <div class="btn-group w-100 shadow-sm" role="group">
+                <button type="button" class="btn btn-dark active" id="viewDayBtn">Día</button>
+                <button type="button" class="btn btn-outline-dark" id="viewWeekBtn">Semana</button>
+            </div>
+        </div>
+
+        <main id="mainContent">
+            <div id="dayView">
+                <div class="form-group mt-3">
+                    <label for="daySelect"><strong>Selecciona un día:</strong></label>
+                    <select class="form-control" id="daySelect" aria-label="Selecciona un día de la semana">
+                        <option value="lunes">Lunes</option>
+                        <option value="martes">Martes</option>
+                        <option value="miércoles">Miércoles</option>
+                        <option value="jueves">Jueves</option>
+                        <option value="viernes">Viernes</option>
+                    </select>
+                </div>
+
+                <div id="dayScheduleContainer">
+                    <table class="table table-bordered schedule-table" id="scheduleTable">
+                        <thead>
+                            <tr>
+                                <th>Hora</th>
+                                <th>Actividad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            </tbody>
+                    </table>
+                </div>
             </div>
 
-            <table class="table table-bordered schedule-table" id="scheduleTable">
-                <thead>
-                    <tr>
-                        <th>Hora</th>
-                        <th>Actividad</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+            <div id="weekView" style="display: none;">
+                <div class="d-flex justify-content-between align-items-center mb-3 p-2 bg-white rounded shadow-sm">
+                    <button class="btn btn-sm btn-outline-secondary" id="prevWeek">← Ant.</button>
+                    <div class="text-center">
+                        <span id="weekLabel" class="font-weight-bold d-block">Esta Semana</span>
+                        <button class="btn btn-link btn-sm p-0 text-primary" id="resetWeek" style="text-decoration:none; font-size: 0.8rem;">Volver a Hoy</button>
+                    </div>
+                    <button class="btn btn-sm btn-outline-secondary" id="nextWeek">Sig. →</button>
+                </div>
+                <div id="weeklyContainer"></div>
+            </div>
 
-            <div id="noScheduleMessage" class="no-schedule" style="display: none;">No hay actividades para este día.</div>
+            <div id="noScheduleMessage" class="no-schedule" style="display: none;">
+                No hay actividades programadas para este periodo.
+            </div>
         </main>
     </div>
 
