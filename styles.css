@@ -55,6 +55,46 @@ tbody td {
 .proceso-enfermeria { background-color: #a5d6a7; color: #222; }
 .gestion-salud-mental, .gestion2-salud-mental { background-color: #ffcc80; color: #222; }
 
+/* ... Tus estilos anteriores se mantienen, añade o actualiza estos: ... */
+
+.btn-group .btn {
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+/* Colores para materias 2026 */
+.adulto-mayor { background-color: #ffb6c1; color: #222; } /* Victor Cabezas */
+.hospitalizado { background-color: #90caf9; color: #222; } /* Madison Cid / Marylin Astete */
+.gestion-salud { background-color: #ffd54f; color: #222; } /* Nicole Muñoz */
+.familia-aps { background-color: #a5d6a7; color: #222; } /* Karis Martínez */
+
+/* Vista Semanal en Móvil */
+.week-day-card {
+    background: white;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    padding: 10px;
+    border-left: 6px solid #343a40;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.week-day-title {
+    font-weight: bold;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 8px;
+    color: #333;
+    text-transform: capitalize;
+}
+
+.week-item {
+    font-size: 0.85rem;
+    padding: 4px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.week-item .time { font-weight: 600; color: #555; margin-right: 10px; }
+
 
 
 /* Selector optimizado para móviles */
