@@ -5,31 +5,31 @@ document.addEventListener("DOMContentLoaded", () => {
     lunes: [
       { 
         inicio: "14:15", fin: "15:35", 
-        actividad: "Gestión del Cuidado en Adulto Mayor\nDocente: Victor Cabezas", 
+        actividad: "Gestión del Cuidado en Adulto Mayor\nDocente: Victor Cabezas\nSala: S-02-P06-A", 
         clase: "adulto-mayor" 
       }, 
       { 
         inicio: "15:46", fin: "16:25", 
-        actividad: "Gestión del Cuidado en Adulto Mayor\nDocente: Victor Cabezas", 
+        actividad: "Gestión del Cuidado en Adulto Mayor\nDocente: Victor Cabezas\nSala: S-02-P06-A", 
         clase: "adulto-mayor" 
       }, 
       { 
         inicio: "16:26", fin: "17:55", 
-        actividad: "Gestión del Cuidado en la Familia en APS\nDocente: Karis Martínez", 
+        actividad: "Gestión del Cuidado en la Familia en APS\nDocente: Karis Martínez\nSala: S-01-P03-A", 
         clase: "familia-aps" 
       } 
     ],
     martes: [
       { 
         inicio: "09:45", fin: "10:25", 
-        actividad: "Gestión del Cuidado en Adulto y Adulto Mayor Hospitalizado\n(Inicia 27/04)", 
+        actividad: "Gestión del Cuidado en Adulto y Adulto Mayor Hospitalizado\nSala: PA\n(Inicia 27/04)", 
         clase: "hospitalizado",
         fechaInicio: "2026-04-27", 
         fechaFin: "2026-07-18" 
       }, 
       { 
         inicio: "11:15", fin: "14:05", 
-        actividad: "PRÁCTICA: Gestión del Cuidado en la Familia en APS\nSala: L-04-P06-A", 
+        actividad: "PRÁCTICA: Gestión del Cuidado en la Familia en APS\nDocente: Karis Martínez\nSala: L-04-P06-A", 
         clase: "familia-aps",
         fechaInicio: "2026-03-16", 
         fechaFin: "2026-04-11",
@@ -37,31 +37,31 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 
       { 
         inicio: "15:46", fin: "17:05", 
-        actividad: "Gestión del Cuidado en Adulto Mayor\nDocente: Victor Cabezas", 
+        actividad: "Gestión del Cuidado en Adulto Mayor\nDocente: Victor Cabezas\nSala: S-02-P05-A", 
         clase: "adulto-mayor" 
       }, 
       { 
         inicio: "17:15", fin: "18:35", 
-        actividad: "Gestión en Salud\nDocente: Nicole Muñoz", 
+        actividad: "Gestión en Salud\nDocente: Nicole Muñoz\nSala: S-04-P05-A", 
         clase: "gestion-salud" 
       } 
     ],
     miércoles: [
       { 
         inicio: "14:56", fin: "16:25", 
-        actividad: "Gestión del Cuidado en la Familia en APS\nDocente: Karis Martínez", 
+        actividad: "Gestión del Cuidado en la Familia en APS\nDocente: Karis Martínez\nSala: S-03-P04-A", 
         clase: "familia-aps" 
       }, 
       { 
         inicio: "16:26", fin: "18:35", 
-        actividad: "Gestión del Cuidado en Adulto y Adulto Mayor Hospitalizado\nDocente: Madison Cid", 
+        actividad: "Gestión del Cuidado en Adulto y Adulto Mayor Hospitalizado\nDocente: Madison Cid\nSala: S-08-P05-A", 
         clase: "hospitalizado" 
       }
     ],
     jueves: [
       { 
         inicio: "12:45", fin: "13:25", 
-        actividad: "Gestión del Cuidado en la Familia en APS\n(Inicia 27/04)", 
+        actividad: "Gestión del Cuidado en la Familia en APS\nSala: PA\n(Inicia 27/04)", 
         clase: "familia-aps",
         fechaInicio: "2026-04-27", 
         fechaFin: "2026-07-18" 
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       { 
         inicio: "17:15", fin: "18:35", 
-        actividad: "Gestión en Salud\nDocente: Nicole Muñoz", 
+        actividad: "Gestión en Salud\nDocente: Nicole Muñoz\nSala: S-04-P05-A", 
         clase: "gestion-salud" 
       } 
     ],
