@@ -10,15 +10,20 @@
 </head>
 <body>
     <div class="container pb-5">
-        <header class="text-center mt-4 mb-3 p-3 bg-white shadow-sm rounded">
+        <header class="text-center mt-4 mb-3 p-3 bg-white shadow-sm rounded position-relative" id="mainHeader">
             <h1 class="mb-0">Horario de Consu</h1>
-            <small class="text-muted font-weight-bold">Semestre Pregrado 2026 - 1</small>
+            <small class="text-muted font-weight-bold">Semestre 2026 - 1</small>
+            
+            <button id="themeToggle" class="btn btn-sm btn-outline-secondary position-absolute" style="top: 15px; right: 15px; border-radius: 50%; width: 35px; height: 35px; padding: 0;">
+                🌙
+            </button>
         </header>
 
         <div class="d-flex justify-content-center mb-4">
             <div class="btn-group w-100 shadow-sm" role="group">
                 <button type="button" class="btn btn-dark active" id="viewDayBtn">Día</button>
                 <button type="button" class="btn btn-outline-dark" id="viewWeekBtn">Semana</button>
+                <button type="button" class="btn btn-outline-dark" id="viewGradesBtn">Notas</button>
             </div>
         </div>
 
@@ -43,8 +48,7 @@
                                 <th>Actividad</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            </tbody>
+                        <tbody></tbody>
                     </table>
                 </div>
             </div>
@@ -61,6 +65,224 @@
                 <div id="weeklyContainer"></div>
             </div>
 
+            <div id="gradesView" style="display: none;">
+                
+                <div class="form-group mt-3">
+                    <label for="subjectSelect" class="text-secondary" style="font-size: 0.9rem; font-weight: 600; text-transform: uppercase;">Asignatura:</label>
+                    <select class="form-control font-weight-bold shadow-sm border-0" id="subjectSelect" style="border-radius: 10px; background-color: #fff; height: 45px;">
+                        <option value="calc-adulto-hosp">Adulto y AM Hospitalizado</option>
+                        <option value="calc-gestion-salud">Gestión en Salud</option>
+                        <option value="calc-familia-aps">Gestión Familia APS</option>
+                        <option value="calc-adulto-mayor">Gestión Adulto Mayor</option>
+                    </select>
+                </div>
+
+                <div id="calc-adulto-hosp" class="calc-container">
+                    <div class="card calc-card border-0 mt-3" style="border-top: 5px solid #90caf9;">
+                        <div class="card-body p-3">
+                            <h5 class="card-title font-weight-bold text-center mb-0">Adulto y AM Hosp.</h5>
+                            
+                            <div class="section-title">Cátedra <span class="nota-badge">60%</span></div>
+                            <div class="notas-list shadow-sm">
+                                <div class="nota-row">
+                                    <span class="nota-label">Ev 1 <span class="nota-badge">20%</span></span>
+                                    <input type="number" class="form-control nota-input" id="ah_c_e1" placeholder="-">
+                                </div>
+                                <div class="nota-row">
+                                    <span class="nota-label">Ev 2 <span class="nota-badge">25%</span></span>
+                                    <input type="number" class="form-control nota-input" id="ah_c_e2" placeholder="-">
+                                </div>
+                                <div class="nota-row">
+                                    <span class="nota-label">Ev 3 <span class="nota-badge">25%</span></span>
+                                    <input type="number" class="form-control nota-input" id="ah_c_e3" placeholder="-">
+                                </div>
+                                <div class="nota-row">
+                                    <span class="nota-label">Ev 4 <span class="nota-badge">20%</span></span>
+                                    <input type="number" class="form-control nota-input" id="ah_c_e4" placeholder="-">
+                                </div>
+                                <div class="nota-row">
+                                    <span class="nota-label">Caso <span class="nota-badge">10%</span></span>
+                                    <input type="number" class="form-control nota-input" id="ah_c_caso" placeholder="-">
+                                </div>
+                            </div>
+
+                            <div class="section-title">Simulación <span class="nota-badge">10%</span></div>
+                            <div class="notas-list shadow-sm">
+                                <div class="nota-row">
+                                    <span class="nota-label">Sim 1 <span class="nota-badge">50%</span></span>
+                                    <input type="number" class="form-control nota-input" id="ah_s_1" placeholder="-">
+                                </div>
+                                <div class="nota-row">
+                                    <span class="nota-label">Sim 2 <span class="nota-badge">50%</span></span>
+                                    <input type="number" class="form-control nota-input" id="ah_s_2" placeholder="-">
+                                </div>
+                            </div>
+
+                            <div class="section-title">Terreno <span class="nota-badge">30%</span></div>
+                            <div class="notas-list shadow-sm">
+                                <div class="nota-row">
+                                    <span class="nota-label">Pauta <span class="nota-badge">100%</span></span>
+                                    <input type="number" class="form-control nota-input" id="ah_t_1" placeholder="-">
+                                </div>
+                            </div>
+
+                            <div class="section-title text-warning">Examen Final <span class="nota-badge bg-warning text-dark">30%</span></div>
+                            <div class="notas-list shadow-sm" style="border: 1px solid #ffeeba;">
+                                <div class="nota-row">
+                                    <span class="nota-label">Nota Examen</span>
+                                    <input type="number" class="form-control nota-input border-warning" id="ah_examen" placeholder="-">
+                                </div>
+                            </div>
+
+                            <div class="alert resultado-box p-3 text-center shadow-sm">
+                                <div class="mb-1 text-secondary"><strong>Presentación (70%): </strong> <span id="ah_res_pres" class="badge badge-light p-1" style="font-size: 1rem;">-</span></div>
+                                <div class="text-primary mt-2" style="font-size: 1.3rem;"><strong>NOTA FINAL: <span id="ah_res_final">-</span></strong><span id="ah_eximida" class="d-block"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="calc-gestion-salud" class="calc-container" style="display: none;">
+                    <div class="card calc-card border-0 mt-3" style="border-top: 5px solid #ffd54f;">
+                        <div class="card-body p-3">
+                            <h5 class="card-title font-weight-bold text-center mb-0">Gestión en Salud</h5>
+                            
+                            <div class="section-title">Notas Presentación <span class="nota-badge">70%</span></div>
+                            <div class="notas-list shadow-sm">
+                                <div class="nota-row">
+                                    <span class="nota-label">Prueba 1 <span class="nota-badge">30%</span></span>
+                                    <input type="number" class="form-control nota-input" id="gs_p1" placeholder="-">
+                                </div>
+                                <div class="nota-row">
+                                    <span class="nota-label">Seminario 2 <span class="nota-badge">15%</span></span>
+                                    <input type="number" class="form-control nota-input" id="gs_s2" placeholder="-">
+                                </div>
+                                <div class="nota-row">
+                                    <span class="nota-label">Prueba 2 <span class="nota-badge">25%</span></span>
+                                    <input type="number" class="form-control nota-input" id="gs_p2" placeholder="-">
+                                </div>
+                                <div class="nota-row">
+                                    <span class="nota-label">Prueba 3 <span class="nota-badge">30%</span></span>
+                                    <input type="number" class="form-control nota-input" id="gs_p3" placeholder="-">
+                                </div>
+                            </div>
+
+                            <div class="section-title text-warning">Examen Final <span class="nota-badge bg-warning text-dark">30%</span></div>
+                            <div class="notas-list shadow-sm" style="border: 1px solid #ffeeba;">
+                                <div class="nota-row">
+                                    <span class="nota-label">Nota Examen</span>
+                                    <input type="number" class="form-control nota-input border-warning" id="gs_examen" placeholder="-">
+                                </div>
+                            </div>
+
+                            <div class="alert resultado-box p-3 text-center shadow-sm">
+                                <div class="mb-1 text-secondary"><strong>Presentación (70%): </strong> <span id="gs_res_pres" class="badge badge-light p-1" style="font-size: 1rem;">-</span></div>
+                                <div class="text-primary mt-2" style="font-size: 1.3rem;"><strong>NOTA FINAL: <span id="gs_res_final">-</span></strong><span id="gs_eximida" class="d-block"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="calc-familia-aps" class="calc-container" style="display: none;">
+                    <div class="card calc-card border-0 mt-3" style="border-top: 5px solid #a5d6a7;">
+                        <div class="card-body p-3">
+                            <h5 class="card-title font-weight-bold text-center mb-0">Gestión Familia APS</h5>
+                            
+                            <div class="section-title">Cátedra <span class="nota-badge">60%</span></div>
+                            <div class="notas-list shadow-sm">
+                                <div class="nota-row">
+                                    <span class="nota-label">Prueba 1 <span class="nota-badge">20%</span></span>
+                                    <input type="number" class="form-control nota-input" id="fa_c_p1" placeholder="-">
+                                </div>
+                                <div class="nota-row">
+                                    <span class="nota-label">Estudio Fam. <span class="nota-badge">30%</span></span>
+                                    <input type="number" class="form-control nota-input" id="fa_c_estudio" placeholder="-">
+                                </div>
+                                <div class="nota-row">
+                                    <span class="nota-label">Prueba 2 <span class="nota-badge">50%</span></span>
+                                    <input type="number" class="form-control nota-input" id="fa_c_p2" placeholder="-">
+                                </div>
+                            </div>
+
+                            <div class="section-title">Simulación <span class="nota-badge">10%</span></div>
+                            <div class="notas-list shadow-sm">
+                                <div class="nota-row">
+                                    <span class="nota-label">Taller VDI <span class="nota-badge">100%</span></span>
+                                    <input type="number" class="form-control nota-input" id="fa_s_1" placeholder="-">
+                                </div>
+                            </div>
+
+                            <div class="section-title">Terreno <span class="nota-badge">30%</span></div>
+                            <div class="notas-list shadow-sm">
+                                <div class="nota-row">
+                                    <span class="nota-label">Pauta Eval. <span class="nota-badge">100%</span></span>
+                                    <input type="number" class="form-control nota-input" id="fa_t_1" placeholder="-">
+                                </div>
+                            </div>
+
+                            <div class="section-title text-warning">Examen Final <span class="nota-badge bg-warning text-dark">30%</span></div>
+                            <div class="notas-list shadow-sm" style="border: 1px solid #ffeeba;">
+                                <div class="nota-row">
+                                    <span class="nota-label">Nota Examen</span>
+                                    <input type="number" class="form-control nota-input border-warning" id="fa_examen" placeholder="-">
+                                </div>
+                            </div>
+
+                            <div class="alert resultado-box p-3 text-center shadow-sm">
+                                <div class="mb-1 text-secondary"><strong>Presentación (70%): </strong> <span id="fa_res_pres" class="badge badge-light p-1" style="font-size: 1rem;">-</span></div>
+                                <div class="text-primary mt-2" style="font-size: 1.3rem;"><strong>NOTA FINAL: <span id="fa_res_final">-</span></strong><span id="fa_eximida" class="d-block"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="calc-adulto-mayor" class="calc-container" style="display: none;">
+                    <div class="card calc-card border-0 mt-3" style="border-top: 5px solid #ffb6c1;">
+                        <div class="card-body p-3">
+                            <h5 class="card-title font-weight-bold text-center mb-0">Gestión Adulto Mayor</h5>
+                            
+                            <div class="section-title">Notas Presentación <span class="nota-badge">70%</span></div>
+                            <div class="notas-list shadow-sm">
+                                <div class="nota-row">
+                                    <span class="nota-label">Prueba 1 <span class="nota-badge">15%</span></span>
+                                    <input type="number" class="form-control nota-input" id="am_p1" placeholder="-">
+                                </div>
+                                <div class="nota-row">
+                                    <span class="nota-label">Prueba 2 <span class="nota-badge">20%</span></span>
+                                    <input type="number" class="form-control nota-input" id="am_p2" placeholder="-">
+                                </div>
+                                <div class="nota-row">
+                                    <span class="nota-label">Trabajo EMPA <span class="nota-badge">25%</span></span>
+                                    <input type="number" class="form-control nota-input" id="am_empa" placeholder="-">
+                                </div>
+                                <div class="nota-row">
+                                    <span class="nota-label">Infografía <span class="nota-badge">10%</span></span>
+                                    <input type="number" class="form-control nota-input" id="am_info" placeholder="-">
+                                </div>
+                                <div class="nota-row">
+                                    <span class="nota-label">Prueba 3 <span class="nota-badge">30%</span></span>
+                                    <input type="number" class="form-control nota-input" id="am_p3" placeholder="-">
+                                </div>
+                            </div>
+
+                            <div class="section-title text-warning">Examen Final <span class="nota-badge bg-warning text-dark">30%</span></div>
+                            <div class="notas-list shadow-sm" style="border: 1px solid #ffeeba;">
+                                <div class="nota-row">
+                                    <span class="nota-label">Nota Examen</span>
+                                    <input type="number" class="form-control nota-input border-warning" id="am_examen" placeholder="-">
+                                </div>
+                            </div>
+
+                            <div class="alert resultado-box p-3 text-center shadow-sm">
+                                <div class="mb-1 text-secondary"><strong>Presentación (70%): </strong> <span id="am_res_pres" class="badge badge-light p-1" style="font-size: 1rem;">-</span></div>
+                                <div class="text-primary mt-2" style="font-size: 1.3rem;"><strong>NOTA FINAL: <span id="am_res_final">-</span></strong><span id="am_eximida" class="d-block"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
             <div id="noScheduleMessage" class="no-schedule" style="display: none;">
                 No hay actividades programadas para este periodo.
             </div>
@@ -68,7 +290,6 @@
     </div>
 
     <script src="./app.js"></script>
-
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" defer></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
