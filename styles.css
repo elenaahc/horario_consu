@@ -13,7 +13,7 @@ h1 {
     margin-top: 20px;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
 .schedule-table td {
@@ -33,9 +33,10 @@ tbody td {
 .schedule-table tbody tr {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
 .schedule-table tbody tr:hover {
     transform: scale(1.01);
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 .no-schedule {
@@ -45,28 +46,32 @@ tbody td {
     font-weight: bold;
 }
 
-/* Colores asignaturas */
-.intervenciones { background-color: #ffb6c1; color: #222; }
-.intervenciones2 { background-color: #a1f0dc; color: #222; }
-.bases-fisiopatologicas { background-color: #90caf9; color: #222; }
-.bases2-fisiopatologicas { background-color: #b39ddb; color: #222; }
-.fundamentos-salud { background-color: #ffd54f; color: #222; }
-.ingles-basico { background-color: #ce93d8; color: #222; }
-.proceso-enfermeria { background-color: #a5d6a7; color: #222; }
-.gestion-salud-mental, .gestion2-salud-mental { background-color: #ffcc80; color: #222; }
+/* Colores asignaturas 2026 */
+.adulto-mayor {
+    background-color: #ffb6c1;
+    color: #222;
+}
 
-/* ... Tus estilos anteriores se mantienen, añade o actualiza estos: ... */
+.hospitalizado {
+    background-color: #90caf9;
+    color: #222;
+}
 
+.gestion-salud {
+    background-color: #ffd54f;
+    color: #222;
+}
+
+.familia-aps {
+    background-color: #a5d6a7;
+    color: #222;
+}
+
+/* Botones de menú */
 .btn-group .btn {
     font-weight: 600;
     transition: 0.3s;
 }
-
-/* Colores para materias 2026 */
-.adulto-mayor { background-color: #ffb6c1; color: #222; } /* Victor Cabezas */
-.hospitalizado { background-color: #90caf9; color: #222; } /* Madison Cid / Marylin Astete */
-.gestion-salud { background-color: #ffd54f; color: #222; } /* Nicole Muñoz */
-.familia-aps { background-color: #a5d6a7; color: #222; } /* Karis Martínez */
 
 /* Vista Semanal en Móvil */
 .week-day-card {
@@ -75,27 +80,35 @@ tbody td {
     border-radius: 10px;
     padding: 10px;
     border-left: 6px solid #343a40;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .week-day-title {
     font-weight: bold;
     border-bottom: 1px solid #eee;
     margin-bottom: 8px;
+    padding-bottom: 5px;
     color: #333;
     text-transform: capitalize;
 }
 
 .week-item {
     font-size: 0.85rem;
-    padding: 4px 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
-.week-item .time { font-weight: 600; color: #555; margin-right: 10px; }
+.week-item .time {
+    font-weight: 600;
+    color: #555;
+    min-width: 45px;
+}
 
-
+/* Utilidades para inputs de Notas en Móviles */
+.input-group-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
 
 /* Selector optimizado para móviles */
 #daySelect {
@@ -104,13 +117,12 @@ tbody td {
     font-size: 1rem;
 }
 
-/* Responsive: tarjetas en móviles */
+/* Responsive */
 @media (max-width: 576px) {
     h1 {
         font-size: 1.5rem;
     }
 
-    /* Centrar y compactar selector */
     .form-group {
         text-align: center;
     }
@@ -120,7 +132,6 @@ tbody td {
         padding: 0.5rem;
     }
 
-    /* Tabla en formato tarjetas */
     table,
     thead,
     tbody,
@@ -138,12 +149,6 @@ tbody td {
     tr {
         position: relative;
         border-left: 5px solid #007bff;
-    }
-    td:first-child::before {
-        content: "🕒 ";
-    }
-
-    tr {
         margin-bottom: 1rem;
         background: #fff;
         border-radius: 8px;
@@ -160,5 +165,210 @@ tbody td {
     td:first-child {
         font-weight: bold;
         color: #333;
+        text-align: left !important;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 8px;
+        margin-bottom: 8px;
     }
+
 }
+
+/* --- ESTILOS MODERNOS PARA LA CALCULADORA (MOBILE APP) --- */
+.calc-card {
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.section-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-weight: 700;
+    color: #868e96;
+    margin-bottom: 8px;
+    margin-top: 20px;
+}
+
+.notas-list {
+    background-color: #fff;
+    border: 1px solid #f1f3f5;
+    border-radius: 12px;
+    padding: 0 12px;
+}
+
+.nota-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f1f3f5;
+}
+
+.nota-row:last-child {
+    border-bottom: none;
+}
+
+.nota-label {
+    font-weight: 600;
+    color: #495057;
+    font-size: 0.95rem;
+}
+
+.nota-badge {
+    font-size: 0.7rem;
+    background-color: #e9ecef;
+    color: #6c757d;
+    padding: 3px 6px;
+    border-radius: 6px;
+    margin-left: 6px;
+    font-weight: 600;
+}
+
+.nota-input {
+    width: 65px !important;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.05rem;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    padding: 4px;
+    height: auto;
+    transition: 0.2s ease;
+}
+
+.nota-input:focus {
+    border-color: #007bff;
+    background-color: #fff;
+    box-shadow: none;
+    outline: none;
+}
+
+.resultado-box {
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    border-radius: 12px;
+    border: none;
+    margin-top: 20px;
+}
+
+/* =========================================
+   MODO OSCURO
+========================================= */
+body.dark-mode {
+    background: linear-gradient(135deg, #121212, #1e1e1e);
+    color: #e0e0e0;
+}
+
+/* Fondos de tarjetas y contenedores */
+body.dark-mode .bg-white,
+body.dark-mode .calc-card,
+body.dark-mode .notas-list,
+body.dark-mode .week-day-card,
+body.dark-mode select.form-control {
+    background-color: #1e1e1e !important;
+    border-color: #333 !important;
+    color: #e0e0e0 !important;
+}
+
+/* Textos y títulos */
+body.dark-mode h1,
+body.dark-mode h5,
+body.dark-mode .week-day-title,
+body.dark-mode .nota-label {
+    color: #f8f9fa !important;
+    border-bottom-color: #333;
+}
+
+body.dark-mode .text-muted,
+body.dark-mode .text-secondary {
+    color: #adb5bd !important;
+}
+
+/* Cajas de inputs y badges */
+body.dark-mode .bg-light {
+    background-color: #2a2a2a !important;
+}
+
+body.dark-mode .input-group-text {
+    background-color: #333;
+    border-color: #444;
+    color: #ddd;
+}
+
+body.dark-mode .nota-input {
+    background-color: #2c2c2c;
+    border-color: #444;
+    color: #fff;
+}
+
+body.dark-mode .nota-badge {
+    background-color: #333;
+    color: #bbb;
+}
+
+body.dark-mode .nota-row {
+    border-bottom-color: #333;
+}
+
+/* Tablas del Horario */
+body.dark-mode .table {
+    color: #e0e0e0;
+}
+
+body.dark-mode .table thead th {
+    background: linear-gradient(135deg, #222, #333);
+}
+
+body.dark-mode tr {
+    background-color: #1e1e1e;
+}
+
+/* Botones de navegación */
+body.dark-mode .btn-outline-dark {
+    color: #ddd;
+    border-color: #555;
+}
+
+body.dark-mode .btn-outline-dark:hover {
+    background-color: #333;
+}
+
+/* Caja de Resultados Finales */
+body.dark-mode .resultado-box {
+    background: linear-gradient(135deg, #1e3a5f, #152744);
+    color: #fff;
+    border: 1px solid #2a4b7c;
+}
+
+/* Cajas de Examen */
+body.dark-mode .border-warning {
+    border-color: #856404 !important;
+}
+
+body.dark-mode .bg-warning {
+    background-color: #856404 !important;
+    color: #fff !important;
+}
+
+/* =========================================
+   FIXES MODO OSCURO (Celulares y Tablas)
+========================================= */
+
+/* 1. Ocultar los bordes blancos de Bootstrap */
+body.dark-mode .table-bordered,
+body.dark-mode .table-bordered td,
+body.dark-mode .table-bordered th {
+    border-color: #333 !important;
+}
+
+/* 2. Arreglar el color de la hora en el celular */
+body.dark-mode td:first-child {
+    color: #f8f9fa !important;
+    border-bottom-color: #333 !important;
+}
+
+/* 3. Opcional: Suavizar los colores de las materias de noche (para no encandilar) */
+body.dark-mode .adulto-mayor { background-color: #a8727b; color: #fff; }
+body.dark-mode .hospitalizado { background-color: #5d8ab5; color: #fff; }
+body.dark-mode .gestion-salud { background-color: #a6851f; color: #fff; }
+body.dark-mode .familia-aps { background-color: #678c69; color: #fff; }
